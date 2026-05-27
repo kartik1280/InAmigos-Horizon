@@ -137,16 +137,16 @@ function Index() {
       {/* NAV */}
       <header className={`fixed top-5 left-0 right-0 z-50 mx-auto w-full max-w-screen-xl px-4 sm:px-6 lg:px-8 rounded-full border border-orange-200/70 bg-white/85 shadow-[0_18px_50px_rgba(234,88,12,0.12)] backdrop-blur-xl ${navVisible ? 'translate-y-0 opacity-100' : '-translate-y-4 opacity-0' } transition-all duration-700`}>
         <div className="flex items-center justify-between py-3">
-          <a href="#top" className="flex items-center gap-2 font-bold tracking-tight">
+          <a href="#home" className="flex items-center gap-2 font-bold tracking-tight">
             <span className="inline-flex h-8 w-8 items-center justify-center rounded-full bg-primary text-primary-foreground">
               <Heart className="h-4 w-4" />
             </span>
             InAmigos Horizon
           </a>
           <nav className="hidden items-center gap-7 text-sm font-medium text-foreground/80 md:flex">
-            <a href="#mission" className="hover:text-orange-600 transition-colors">Mission</a>
+            <a href="#about" className="hover:text-orange-600 transition-colors">Mission</a>
             <a href="#impact" className="hover:text-orange-600 transition-colors">Impact</a>
-            <a href="#programs" className="hover:text-orange-600 transition-colors">Programs</a>
+            <a href="#projects" className="hover:text-orange-600 transition-colors">Programs</a>
             <a href="#volunteer" className="hover:text-orange-600 transition-colors">Volunteer</a>
           </nav>
           <Button asChild size="sm" className="rounded-full">
@@ -157,7 +157,7 @@ function Index() {
       </header>
 
       {/* HERO */}
-      <section id="top" className="relative overflow-hidden pt-20 pb-16 md:pt-24 md:pb-20">
+      <section id="home" className="relative overflow-hidden pt-20 pb-16 md:pt-24 md:pb-20">
         <div className="absolute right-[-6%] top-24 h-72 w-72 rounded-full bg-secondary/30 blur-3xl animate-float" aria-hidden />
         <div className="absolute left-[-4%] bottom-10 h-72 w-72 rounded-full bg-primary/20 blur-3xl animate-float" aria-hidden />
 
@@ -178,7 +178,7 @@ function Index() {
                 </a>
               </Button>
               <Button asChild size="lg" variant="outline" className="rounded-full px-7 glass hover:scale-105 transition-transform">
-                <a href="#mission">Learn more</a>
+                <a href="#about">Learn more</a>
               </Button>
             </div>
           </div>
@@ -212,7 +212,7 @@ function Index() {
       </section>
 
       {/* MISSION - split layout */}
-      <section id="mission" className="relative py-20 md:py-24 scroll-mt-32">
+      <section id="about" className="relative py-20 md:py-24 scroll-mt-32">
         <div className="w-full max-w-screen-xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid gap-8 md:grid-cols-2 items-center">
             {/* LEFT */}
@@ -225,7 +225,7 @@ function Index() {
 
               <div className="mt-6 flex flex-wrap gap-3">
                 <Button asChild size="md" className="rounded-full px-6 hover:scale-105 transition-transform">
-                  <a href="#programs">Explore Initiatives</a>
+                  <a href="#projects">Explore Initiatives</a>
                 </Button>
                 <Button asChild size="md" variant="outline" className="rounded-full px-6 hover:scale-105 transition-transform">
                   <a href="#volunteer">Become a Volunteer</a>
@@ -273,7 +273,7 @@ function Index() {
       </section>
 
       {/* PROGRAMS */}
-      <section id="programs" className="relative py-20 md:py-24 scroll-mt-32">
+      <section id="projects" className="relative py-20 md:py-24 scroll-mt-32">
         <div className="w-full max-w-screen-xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="reveal mb-14 max-w-2xl">
             <p className="mb-3 text-sm font-semibold uppercase tracking-[0.2em] text-primary">
@@ -416,6 +416,9 @@ function Index() {
           </div>
         </div>
       </section>
+
+      {/* CONTACT ANCHOR (invisible) */}
+      <section id="contact" aria-hidden className="sr-only" />
 
       {/* FOOTER */}
       <footer className="border-t border-border/60 py-12">
