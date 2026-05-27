@@ -4,31 +4,35 @@ import {
   Heart,
   Users,
   GraduationCap,
-  Stethoscope,
   Leaf,
   ArrowRight,
   Globe2,
   HandHeart,
   Sparkles,
-  Mail,
   MapPin,
-  Phone,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import heroImg from "@/assets/hero.jpg";
+import heroImg from "@/assets/Hero.jpg.png";
 import educationImg from "@/assets/education.jpg";
 import healthImg from "@/assets/health.jpg";
 import environmentImg from "@/assets/environment.jpg";
+import missionMain from "@/assets/mission.jpg.png"; // Replace with official InAmigos website or LinkedIn image (now using mission.jpg)
+import sevaImg from "@/assets/Seva.jpg.png"; // Replace with official InAmigos gallery/event image
+import bachpanshalaImg from "@/assets/bachpanshala.jpg.png"; // Replace with official InAmigos gallery/event image
+import jeevImg from "@/assets/jeev.jpg.png"; // Replace with official InAmigos gallery/event image
+import udaanImg from "@/assets/Udaan.jpg.png"; // Replace with official InAmigos gallery/event image
+import prakritiImg from "@/assets/prakriti.jpg.png"; // Replace with official InAmigos gallery/event image
+import vikasImg from "@/assets/Vikaas.jpg.png"; // Replace with official InAmigos gallery/event image
 
 export const Route = createFileRoute("/")({
   component: Index,
   head: () => ({
     meta: [
-      { title: "InAmigos Foundation — Building Hope, Together" },
+      { title: "InAmigos Horizon — Building Hope, Together" },
       {
         name: "description",
         content:
-          "InAmigos Foundation empowers communities through education, healthcare, and sustainable development. Join us as a volunteer and create lasting change.",
+          "InAmigos Horizon (InAmigos Foundation) is a Section 8 non-profit based in Chhattisgarh. We run community-led programs in education, livelihoods, environment, animal welfare and more.",
       },
     ],
   }),
@@ -103,7 +107,7 @@ function StatCard({
   return (
     <div
       ref={ref}
-      className="glass reveal rounded-2xl p-6 text-center transition-transform hover:-translate-y-1"
+      className="glass reveal rounded-2xl p-6 text-center transition-transform hover:-translate-y-2 transition-all duration-300"
     >
       <div className="mx-auto mb-3 inline-flex h-12 w-12 items-center justify-center rounded-full bg-primary/10 text-primary">
         <Icon className="h-6 w-6" />
@@ -119,72 +123,75 @@ function StatCard({
 
 function Index() {
   useReveal();
+  const [navVisible, setNavVisible] = useState(false);
+  useEffect(() => {
+    const t = setTimeout(() => setNavVisible(true), 60);
+    return () => clearTimeout(t);
+  }, []);
 
   return (
-    <div className="min-h-screen bg-background text-foreground">
+    <div className="site-container min-h-screen bg-[#fff8ef] text-foreground relative overflow-x-hidden">
+      {/* warm radial glows (visual only) - replace or adjust colors if needed */}
+      <div className="absolute -top-40 -left-40 h-96 w-96 rounded-full bg-gradient-to-br from-orange-200/40 to-transparent blur-3xl pointer-events-none" aria-hidden />
+      <div className="absolute -top-32 right-[-8%] h-96 w-96 rounded-full bg-gradient-to-br from-teal-200/30 to-transparent blur-3xl pointer-events-none" aria-hidden />
       {/* NAV */}
-      <header className="fixed top-0 z-50 w-full">
-        <div className="mx-auto mt-4 flex max-w-6xl items-center justify-between rounded-full glass px-5 py-3">
+      <header className={`fixed top-5 left-0 right-0 z-50 mx-auto w-full max-w-screen-xl px-4 sm:px-6 lg:px-8 rounded-full border border-orange-200/70 bg-white/85 shadow-[0_18px_50px_rgba(234,88,12,0.12)] backdrop-blur-xl ${navVisible ? 'translate-y-0 opacity-100' : '-translate-y-4 opacity-0' } transition-all duration-700`}>
+        <div className="flex items-center justify-between py-3">
           <a href="#top" className="flex items-center gap-2 font-bold tracking-tight">
             <span className="inline-flex h-8 w-8 items-center justify-center rounded-full bg-primary text-primary-foreground">
               <Heart className="h-4 w-4" />
             </span>
-            InAmigos
+            InAmigos Horizon
           </a>
           <nav className="hidden items-center gap-7 text-sm font-medium text-foreground/80 md:flex">
-            <a href="#mission" className="hover:text-primary">Mission</a>
-            <a href="#impact" className="hover:text-primary">Impact</a>
-            <a href="#programs" className="hover:text-primary">Programs</a>
-            <a href="#volunteer" className="hover:text-primary">Volunteer</a>
+            <a href="#mission" className="hover:text-orange-600 transition-colors">Mission</a>
+            <a href="#impact" className="hover:text-orange-600 transition-colors">Impact</a>
+            <a href="#programs" className="hover:text-orange-600 transition-colors">Programs</a>
+            <a href="#volunteer" className="hover:text-orange-600 transition-colors">Volunteer</a>
           </nav>
           <Button asChild size="sm" className="rounded-full">
             <a href="#volunteer">Donate</a>
           </Button>
         </div>
+        <div className="absolute -bottom-2 left-6 right-6 h-1 bg-gradient-to-r from-orange-200/40 via-transparent to-teal-200/30 rounded-full blur-sm pointer-events-none" aria-hidden />
       </header>
 
       {/* HERO */}
-      <section id="top" className="relative overflow-hidden pt-32 pb-20 md:pt-40 md:pb-28">
-        <div className="absolute inset-0 gradient-bg" aria-hidden />
+      <section id="top" className="relative overflow-hidden pt-20 pb-16 md:pt-24 md:pb-20">
         <div className="absolute right-[-6%] top-24 h-72 w-72 rounded-full bg-secondary/30 blur-3xl animate-float" aria-hidden />
         <div className="absolute left-[-4%] bottom-10 h-72 w-72 rounded-full bg-primary/20 blur-3xl animate-float" aria-hidden />
 
-        <div className="relative mx-auto grid max-w-6xl items-center gap-12 px-6 md:grid-cols-2">
+        <div className="relative w-full max-w-screen-xl mx-auto grid items-center gap-12 px-4 sm:px-6 lg:px-8 md:grid-cols-2">
           <div className="reveal">
-            <div className="mb-5 inline-flex items-center gap-2 rounded-full glass px-4 py-1.5 text-xs font-medium text-foreground/80">
-              <Sparkles className="h-3.5 w-3.5 text-primary" /> Empowering communities since 2012
-            </div>
+            <div className="mb-2 text-sm font-semibold uppercase tracking-wide text-foreground/70">InAmigos Horizon</div>
             <h1 className="text-4xl font-bold leading-[1.05] tracking-tight md:text-6xl">
-              Building hope,
-              <br />
-              <span className="bg-gradient-to-r from-primary via-accent to-secondary bg-clip-text text-transparent">
-                together.
-              </span>
+              Uniting minds for change.
             </h1>
-            <p className="mt-5 max-w-lg text-lg text-muted-foreground">
-              InAmigos Foundation partners with local leaders to deliver education, healthcare, and
-              sustainable opportunity to underserved communities around the world.
+            <p className="mt-4 max-w-lg text-lg text-muted-foreground">
+              InAmigos Foundation works to support communities through education, women empowerment,
+              animal welfare, environmental care, social support, and skill development initiatives across India.
             </p>
-            <div className="mt-8 flex flex-wrap gap-3">
-              <Button asChild size="lg" className="rounded-full px-7">
+            <div className="mt-6 flex flex-wrap gap-3">
+              <Button asChild size="lg" className="rounded-full px-7 hover:scale-105 transition-transform">
                 <a href="#volunteer">
                   Become a volunteer <ArrowRight className="ml-1 h-4 w-4" />
                 </a>
               </Button>
-              <Button asChild size="lg" variant="outline" className="rounded-full px-7 glass">
+              <Button asChild size="lg" variant="outline" className="rounded-full px-7 glass hover:scale-105 transition-transform">
                 <a href="#mission">Learn more</a>
               </Button>
             </div>
           </div>
 
-          <div className="reveal relative">
+            <div className="reveal relative">
             <div className="relative overflow-hidden rounded-3xl glass p-2 shadow-2xl">
+              {/* Replace this with an official InAmigos event/gallery image (inamigosfoundation.org.in) */}
               <img
                 src={heroImg}
                 alt="Volunteers smiling together at golden hour"
                 width={1920}
                 height={1280}
-                className="h-[420px] w-full rounded-2xl object-cover md:h-[520px]"
+                className="max-w-full w-full h-[420px] rounded-2xl object-cover object-center md:h-[520px]"
               />
             </div>
             <div className="absolute -bottom-6 -left-6 hidden rounded-2xl glass p-4 shadow-xl md:block">
@@ -195,8 +202,8 @@ function Index() {
                   ))}
                 </div>
                 <div>
-                  <div className="text-sm font-semibold">12,000+ volunteers</div>
-                  <div className="text-xs text-muted-foreground">across 27 countries</div>
+                  <div className="text-sm font-semibold">200 volunteers</div>
+                  <div className="text-xs text-muted-foreground">across 28 states</div>
                 </div>
               </div>
             </div>
@@ -204,79 +211,132 @@ function Index() {
         </div>
       </section>
 
-      {/* MISSION */}
-      <section id="mission" className="relative py-20 md:py-28">
-        <div className="mx-auto max-w-5xl px-6 text-center">
-          <p className="reveal mb-3 text-sm font-semibold uppercase tracking-[0.2em] text-primary">
-            Our mission
-          </p>
-          <h2 className="reveal text-3xl font-bold tracking-tight md:text-5xl">
-            Small acts of kindness, multiplied into movements.
-          </h2>
-          <p className="reveal mx-auto mt-5 max-w-2xl text-lg text-muted-foreground">
-            We believe lasting change happens when communities lead. Our role is to listen, to
-            resource, and to amplify the people already doing the work.
-          </p>
+      {/* MISSION - split layout */}
+      <section id="mission" className="relative py-20 md:py-24 scroll-mt-32">
+        <div className="w-full max-w-screen-xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="grid gap-8 md:grid-cols-2 items-center">
+            {/* LEFT */}
+            <div className="reveal">
+              <p className="mb-3 text-sm font-semibold uppercase tracking-[0.2em] text-primary">OUR MISSION</p>
+              <h2 className="text-3xl font-bold tracking-tight md:text-5xl">Awareness that inspires action.</h2>
+              <p className="mt-4 max-w-2xl text-lg text-muted-foreground">
+                Through volunteer-led initiatives and community-driven programs, InAmigos Foundation focuses on creating practical, compassionate, and sustainable impact for people, animals, and the environment.
+              </p>
+
+              <div className="mt-6 flex flex-wrap gap-3">
+                <Button asChild size="md" className="rounded-full px-6 hover:scale-105 transition-transform">
+                  <a href="#programs">Explore Initiatives</a>
+                </Button>
+                <Button asChild size="md" variant="outline" className="rounded-full px-6 hover:scale-105 transition-transform">
+                  <a href="#volunteer">Become a Volunteer</a>
+                </Button>
+              </div>
+
+              <div className="mt-6 flex gap-3">
+                <span className="rounded-full bg-white/40 px-3 py-1 text-sm font-medium">Community Support</span>
+                <span className="rounded-full bg-white/40 px-3 py-1 text-sm font-medium">Education & Skills</span>
+                <span className="rounded-full bg-white/40 px-3 py-1 text-sm font-medium">Compassion in Action</span>
+              </div>
+            </div>
+
+            {/* RIGHT - images & stat bubble */}
+            <div className="reveal relative flex items-center justify-center">
+              <div className="relative">
+                <div className="rounded-3xl overflow-hidden shadow-2xl w-full max-w-[420px] h-[420px] md:h-[520px]">
+                  {/* Replace with official InAmigos event/gallery image */}
+                  <img src={missionMain} alt="Mission main" className="w-full h-full object-cover animate-float" />
+                </div>
+
+                {/* secondary overlapping image removed per request */}
+
+                <div className="absolute -top-6 right-[-6%] glass rounded-full px-4 py-2 shadow-lg">
+                  <div className="text-sm font-semibold">50,000+ beneficiaries</div>
+                </div>
+
+                <div className="absolute inset-0 -z-10 rounded-full bg-gradient-to-br from-orange-100/60 to-transparent blur-3xl" aria-hidden />
+              </div>
+            </div>
+          </div>
         </div>
       </section>
 
       {/* IMPACT STATS */}
       <section id="impact" className="relative py-12 md:py-16">
-        <div className="mx-auto max-w-6xl px-6">
+        <div className="w-full max-w-screen-xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-2 gap-5 md:grid-cols-4">
-            <StatCard value={120000} suffix="+" label="Lives impacted" icon={HandHeart} />
-            <StatCard value={27} label="Countries reached" icon={Globe2} />
-            <StatCard value={350} suffix="+" label="Active projects" icon={Sparkles} />
-            <StatCard value={12000} suffix="+" label="Volunteers worldwide" icon={Users} />
+            <StatCard value={50000} suffix="+" label="Beneficiaries" icon={HandHeart} />
+            <StatCard value={28} label="States" icon={Globe2} />
+            <StatCard value={6} label="Causes" icon={Sparkles} />
+            <StatCard value={200} suffix="+" label="Volunteers" icon={Users} />
           </div>
         </div>
       </section>
 
       {/* PROGRAMS */}
-      <section id="programs" className="relative py-20 md:py-28">
-        <div className="mx-auto max-w-6xl px-6">
+      <section id="programs" className="relative py-20 md:py-24 scroll-mt-32">
+        <div className="w-full max-w-screen-xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="reveal mb-14 max-w-2xl">
             <p className="mb-3 text-sm font-semibold uppercase tracking-[0.2em] text-primary">
-              What we do
+              Our initiatives
             </p>
             <h2 className="text-3xl font-bold tracking-tight md:text-5xl">
-              Three pillars. One promise: dignity for every life.
+              Six initiatives creating care, opportunity, and resilience.
             </h2>
           </div>
 
           <div className="grid gap-6 md:grid-cols-3">
-            {[
-              {
-                title: "Education",
-                desc: "Scholarships, classrooms, and teacher training that put children on a path to opportunity.",
-                img: educationImg,
-                icon: GraduationCap,
-              },
-              {
-                title: "Healthcare",
-                desc: "Mobile clinics and maternal care reaching the last mile, where it matters most.",
-                img: healthImg,
-                icon: Stethoscope,
-              },
-              {
-                title: "Environment",
-                desc: "Reforestation and clean water initiatives co-designed with the communities we serve.",
-                img: environmentImg,
-                icon: Leaf,
-              },
-            ].map((p) => (
-              <div
-                key={p.title}
-                className="group reveal overflow-hidden rounded-3xl glass transition-all hover:-translate-y-1 hover:shadow-2xl"
-              >
+            {
+              [
+                {
+                  title: "Project Seva",
+                  desc: "Food and clothing support for underprivileged communities.",
+                  img: sevaImg,
+                  icon: HandHeart,
+                },
+                {
+                  title: "Project Bachpanshala",
+                  desc: "Education support for underprivileged children, including digital literacy, life skills, and school learning.",
+                  img: bachpanshalaImg,
+                  icon: GraduationCap,
+                },
+                {
+                  title: "Project Jeev",
+                  desc: "Animal welfare, including rescue, protection, feeding, and care for vulnerable animals.",
+                  img: jeevImg,
+                  icon: Heart,
+                },
+                {
+                  title: "Project Udaan",
+                  desc: "Women empowerment through skill development, financial independence, and awareness.",
+                  img: udaanImg,
+                  icon: Users,
+                },
+                {
+                  title: "Project Prakriti",
+                  desc: "Environmental conservation, sustainability, sapling plantation, and eco-friendly practices.",
+                  img: prakritiImg,
+                  icon: Leaf,
+                },
+                {
+                  title: "Project Vikas",
+                  desc: "Employability and skill development through internships, training, and youth development opportunities.",
+                  img: vikasImg,
+                  icon: Sparkles,
+                },
+              ].map((p) => (
+                <div
+                  key={p.title}
+                  className="group reveal overflow-hidden rounded-3xl glass transition-all hover:-translate-y-2 hover:shadow-2xl transition-all duration-300"
+                >
                 <div className="overflow-hidden">
+                  {/* Replace this with an official InAmigos gallery/event image when available */}
                   <img
                     src={p.img}
                     alt={p.title}
                     width={1024}
                     height={768}
                     loading="lazy"
-                    className="h-56 w-full object-cover transition-transform duration-700 group-hover:scale-105"
+                    className="max-w-full w-full h-56 object-cover object-center transition-transform duration-700 group-hover:scale-105"
                   />
                 </div>
                 <div className="p-6">
@@ -300,7 +360,7 @@ function Index() {
 
       {/* VOLUNTEER CTA */}
       <section id="volunteer" className="relative py-20 md:py-28">
-        <div className="mx-auto max-w-6xl px-6">
+        <div className="w-full max-w-screen-xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="reveal relative overflow-hidden rounded-3xl bg-gradient-to-br from-primary via-primary to-accent p-10 text-primary-foreground shadow-2xl md:p-16">
             <div className="absolute -right-20 -top-20 h-80 w-80 rounded-full bg-white/10 blur-3xl" aria-hidden />
             <div className="absolute -bottom-24 -left-10 h-80 w-80 rounded-full bg-secondary/30 blur-3xl" aria-hidden />
@@ -310,19 +370,23 @@ function Index() {
                   Your hands. Their future. One story.
                 </h2>
                 <p className="mt-4 max-w-md text-lg text-primary-foreground/90">
-                  Volunteer with InAmigos and join a global community changing lives — locally and
-                  abroad.
+                  Volunteer with InAmigos Horizon and join our community across 28 states, supporting
+                  50,000 beneficiaries through focused, local action.
                 </p>
                 <div className="mt-8 flex flex-wrap gap-3">
-                  <Button size="lg" variant="secondary" className="rounded-full px-7">
-                    Apply to volunteer
+                  <Button asChild size="lg" variant="secondary" className="rounded-full px-7 transition-transform duration-300 ease-out hover:scale-105 cursor-pointer">
+                    <a
+                      href="https://docs.google.com/forms/d/e/1FAIpQLScAgWgiWEjMm5N5HO9f-kF5_MNCsFu0AjfF9-sFnWGYdJG7Jg/viewform"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      Apply to volunteer
+                    </a>
                   </Button>
-                  <Button
-                    size="lg"
-                    variant="outline"
-                    className="rounded-full border-white/40 bg-white/10 px-7 text-white hover:bg-white/20"
-                  >
-                    Donate today
+                  <Button asChild size="lg" variant="outline" className="rounded-full border-white/40 bg-white/10 px-7 text-white transition-transform duration-300 ease-out hover:bg-white/20 hover:scale-105 cursor-pointer">
+                    <a href="https://pages.razorpay.com/pl_H621G6ea64ZMl7/view" target="_blank" rel="noopener noreferrer">
+                      Donate today
+                    </a>
                   </Button>
                 </div>
               </div>
@@ -343,8 +407,8 @@ function Index() {
                     placeholder="Email address"
                     className="w-full rounded-lg bg-white/15 px-4 py-3 text-sm text-white placeholder:text-white/60 outline-none ring-1 ring-white/20 focus:ring-white/60"
                   />
-                  <Button className="w-full rounded-lg bg-white text-primary hover:bg-white/90">
-                    Join the movement
+                  <Button asChild className="w-full rounded-lg bg-white text-primary transition-transform duration-300 ease-out hover:bg-white/90 hover:scale-105 cursor-pointer">
+                    <a href="https://inamigosfoundation.org.in/became-volunteer" target="_blank" rel="noopener noreferrer">Join the movement</a>
                   </Button>
                 </div>
               </form>
@@ -355,25 +419,26 @@ function Index() {
 
       {/* FOOTER */}
       <footer className="border-t border-border/60 py-12">
-        <div className="mx-auto grid max-w-6xl gap-8 px-6 md:grid-cols-3">
+      <div className="w-full max-w-screen-xl mx-auto grid gap-8 px-4 sm:px-6 lg:px-8 md:grid-cols-3">
           <div>
             <div className="flex items-center gap-2 font-bold">
               <span className="inline-flex h-8 w-8 items-center justify-center rounded-full bg-primary text-primary-foreground">
                 <Heart className="h-4 w-4" />
               </span>
-              InAmigos Foundation
+              InAmigos Horizon
             </div>
             <p className="mt-3 max-w-xs text-sm text-muted-foreground">
-              A registered non-profit dedicated to amplifying community-led change.
+              Section 8 registered non-profit based in Chhattisgarh. Founded Sep 23, 2020 by Mr.
+              Govind Shukla, Founder & CEO.
             </p>
           </div>
           <div className="space-y-2 text-sm text-muted-foreground">
-            <div className="flex items-center gap-2"><MapPin className="h-4 w-4 text-primary" /> 1240 Mission Ave, Suite 300</div>
-            <div className="flex items-center gap-2"><Mail className="h-4 w-4 text-primary" /> hello@inamigos.org</div>
-            <div className="flex items-center gap-2"><Phone className="h-4 w-4 text-primary" /> +1 (415) 555-0182</div>
+            <div className="flex items-center gap-2"><MapPin className="h-4 w-4 text-primary" /> Based in Chhattisgarh, India</div>
+            <div className="flex items-center gap-2"><Users className="h-4 w-4 text-primary" /> Founded Sep 23, 2020 — Govind Shukla</div>
+            <div className="flex items-center gap-2"><Sparkles className="h-4 w-4 text-primary" /> 80G · 12A · CSR-1 · NITI Aayog · ISO 9001:2015</div>
           </div>
           <div className="text-sm text-muted-foreground md:text-right">
-            © {new Date().getFullYear()} InAmigos Foundation. All rights reserved.
+            © {new Date().getFullYear()} InAmigos Horizon. All rights reserved.
           </div>
         </div>
       </footer>

@@ -135,16 +135,69 @@
 @layer base {
   * {
     border-color: var(--color-border);
+    box-sizing: border-box;
   }
 
   html {
     scroll-behavior: smooth;
+    overflow-x: hidden; /* prevent horizontal overflow globally */
+    max-width: 100vw;
   }
 
   body {
     background-color: var(--color-background);
     color: var(--color-foreground);
     font-feature-settings: "ss01", "cv11";
+    /* Prevent horizontal overflow and hide native scrollbars */
+    overflow-x: hidden;
+    max-width: 100vw;
+    -ms-overflow-style: none; /* IE and Edge */
+    scrollbar-width: none; /* Firefox */
+  }
+
+  /* WebKit browsers */
+  body::-webkit-scrollbar {
+    display: none;
+  }
+
+  /* Hide in-page custom scrollbars (Radix ScrollArea or similar libraries)
+     This hides rails/thumbs rendered as elements with role="scrollbar"
+     or common scrollbar class names. Keeps native browser chrome untouched. */
+  [role="scrollbar"], .scrollbar, .ScrollBar, .scroll-area-scrollbar {
+    display: none !important;
+  }
+
+  /* Hide common custom scrollbar implementations (SimpleBar, PerfectScrollbar,
+     OverlayScrollbars, TinyScrollbar, Radix variants, etc.) */
+  .simplebar-track, .simplebar-scrollbar, .simplebar-vertical, .ps__rail-y, .ps__thumb-y,
+  .os-scrollbar, .os-scrollbar-vertical, .overlay-scrollbar, .overlay-scrollbar__rail,
+  .rs__scrollbar, .rs__rail, .ps-scrollbar-y, .ps-scrollbar-y-rail, .scrollbar-thumb,
+  .scrollbar-track, .scrollbar-rail, .scrollbar-container, .scrollbar-track-y,
+  .scrollbar-y, .scrollbarbar, .perfect-scrollbar, .perfect-scrollbar::before {
+    display: none !important;
+    visibility: hidden !important;
+    opacity: 0 !important;
+  }
+
+  /* Also hide any elements that appear to be vertical rails anchored to the right */
+  .rtl-hidden-rail, [data-scrollbar-rail], [data-scrollbar-thumb] {
+    display: none !important;
+  }
+
+  /* Prevent elements from exceeding viewport width */
+  img, picture, video, svg {
+    max-width: 100%;
+    height: auto;
+    object-fit: cover;
+    object-position: center;
+    display: block;
+  }
+
+  /* Utility to ensure main/root wrappers don't overflow */
+  .site-container {
+    width: 100%;
+    max-width: 100vw;
+    overflow-x: hidden;
   }
 }
 
